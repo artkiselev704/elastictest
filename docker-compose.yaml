@@ -6,6 +6,19 @@ services:
     restart: always
     environment:
       - discovery.type=single-node
-      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - xpack.security.enabled=false
+      - cluster.routing.allocation.disk.threshold_enabled=false
+      - bootstrap.memory_lock=true
+      - xpack.license.self_generated.type=trial
+      - http.port=9200
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+      - action.destructive_requires_name=false
     ports:
       - "9200:9200"
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536 
+      memlock:
+        soft: -1
+        hard: -1
