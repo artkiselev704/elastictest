@@ -1,0 +1,26 @@
+name: Run
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Start
+        run: docker compose up -d
+
+      - name: Wait
+        run: sleep 60
+
+      - name: Discover ps
+        run: docker compose ps
+
+      - name: Logs
+        run: docker compose logs
+
+      - name: Test
+        run: curl --verbose --show-error http://127.0.0.1:9200
