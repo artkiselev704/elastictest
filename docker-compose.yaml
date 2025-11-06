@@ -22,3 +22,5 @@ services:
       memlock:
         soft: -1
         hard: -1
+    volumes:
+      - ./data/elasticsearch:/usr/share/elasticsearch/data
