@@ -13,7 +13,7 @@ jobs:
           fetch-depth: 0
 
       - name: Chown elasticsearch directory
-        run: sudo chown -R 1000:1000 ./data/elasticsearch
+        run: sudo chown -R 1000:1000 ./data/elasticsearch/
 
       - name: Start
         run: docker compose up -d
